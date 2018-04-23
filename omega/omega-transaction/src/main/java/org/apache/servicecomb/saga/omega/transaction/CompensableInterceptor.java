@@ -37,7 +37,10 @@ class CompensableInterceptor implements EventAwareInterceptor {
 
   @Override
   public void postIntercept(String parentTxId, String compensationMethod) {
-    sender.send(new TxEndedEvent(context.globalTxId(), context.localTxId(), parentTxId, compensationMethod));
+    AlphaResponse response = sender.send(new TxEndedEvent(context.globalTxId(), context.localTxId(), parentTxId, compensationMethod));
+    if (response.aborted()) {
+      throw new OmegaException("transaction " + parentTxId + " is aborted");
+    }
   }
 
   @Override

@@ -38,7 +38,7 @@ import org.apache.servicecomb.saga.pack.contract.grpc.TxEventServiceGrpc.TxEvent
 import io.grpc.stub.StreamObserver;
 
 class GrpcTxEventEndpointImpl extends TxEventServiceImplBase {
-
+  
   private static final GrpcAck ALLOW = GrpcAck.newBuilder().setAborted(false).build();
   private static final GrpcAck REJECT = GrpcAck.newBuilder().setAborted(true).build();
 
