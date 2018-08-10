@@ -60,6 +60,7 @@ class GrpcCompensateStreamObserver implements StreamObserver<GrpcCompensateComma
   @Override
   public void onError(Throwable t) {
     LOG.error("failed to process grpc compensate command.", t);
+    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
     errorHandler.run();
   }
 
